@@ -40,10 +40,15 @@ jobs:
         with:
           version: v3.3.1
 
-      - name: Get AKS Credentials
-        uses: Azure/aks-set-context@v1
+      - name: Azure Login (Ron, Added)
+        uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get AKS Credentials
+        uses: Azure/aks-set-context@v2.2
+        with:
+          # creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: mslearn-gh-pipelines-13700
           cluster-name: contoso-video
           
